@@ -23,14 +23,21 @@ public class StockMarket {
     }
 
     public void tradeStock(String stockName, String bid) {
+        boolean found = false;
         for (Stock stock : stocks) {
             if (stock.ID.equals(stockName)) {
                 stock.setBid(bid);
                 System.out.println("Traded " + stockName + " with bid: " + bid);
                 System.out.println(stockName + " New " + stock.getMetric());
+                found = true;
+                break;
             }
         }
+        if (!found) {
+            System.out.println("Stock " + stockName + " not found in the market.");
+        }
     }
+    
 
     public void removeStock(String stockName) {
         stocks.removeIf(stock -> stock.ID.equals(stockName));

@@ -36,9 +36,14 @@ public abstract class Stock implements Tradable {
     }
 
     public void updatePrice() {
-        this.price = pricingStrategy.computeNewPrice(this.price);
-        System.out.println("Updated price for " + name + ": " + this.price);
+        if (pricingStrategy != null) {
+            this.price = pricingStrategy.computeNewPrice(this.price);
+            System.out.println("Updated price for " + name + ": " + this.price);
+        } else {
+            System.out.println("No pricing strategy set for " + name);
+        }
     }
+    
 
     @Override
     public void setBid(String bid) {
