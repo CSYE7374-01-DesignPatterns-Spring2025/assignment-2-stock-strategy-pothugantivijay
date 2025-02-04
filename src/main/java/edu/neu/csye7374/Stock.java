@@ -56,6 +56,9 @@ public abstract class Stock implements Tradable {
 
     @Override
     public String toString() {
-        return "[Stock ID:" + ID + " name=" + name + ", price:" + price + ", description:" + description + ", metric:" + getMetric() + "]";
+        return String.format(
+            "[Stock ID:%s name=%s, price:%.2f, description:%s, metric:%d]",
+            ID, name, price, description, getMetric()
+        );
     }
 }
